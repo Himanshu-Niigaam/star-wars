@@ -1,0 +1,46 @@
+section {
+    background-image: url('../../assets/images/star-war1.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    color: #efecec;
+    text-transform: uppercase;
+    font-size: 40px;
+    line-height: 50px;
+    font-weight: 400;
+    margin-bottom: 30px;
+  }
+
+.input_box {
+    width: 53%;
+    padding: 10px;
+    margin-bottom: 30px;
+    border: none;
+}
+
+.input_wrapper {
+    text-align: center;
+}
+
+.submit_btn {
+    background-color: #53051b;
+    padding: 10px 15px;
+    color: #ffffff;
+    text-transform: uppercase;
+    border: 1px solid #53051b;
+    cursor: pointer;
+    width: 57%;
+    font-size: 18px;
+    letter-spacing: 1px;
+    margin-top: 20px;
+} 
