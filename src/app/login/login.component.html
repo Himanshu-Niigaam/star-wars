@@ -1,10 +1,10 @@
 <section class="container">
     <div id="login">
         <h1>welcome to star wars</h1>
-        <form>
+        <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
             <div class="input_wrapper">
-                <input type="text" class="input_box" placeholder="Enter your Username" name="username"><br />
-                <input type="password" class="input_box" placeholder="Enter your Password" name="password"><br />
+                <input type="text" class="input_box" formControlName="name" placeholder="Enter your Username"><br />
+                <input type="password" class="input_box" formControlName="birth_year" placeholder="Enter your Password"><br />
                 <button type="submit" class="submit_btn">submit</button>
             </div>
         </form>
