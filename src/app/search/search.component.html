@@ -1,1 +1,30 @@
-<p>search works!</p>
+<section class="container">
+    <div id="login">
+        <h1 style="color:#000;">welcome to star wars</h1>
+        <div class="input_wrapper">
+            <form [formGroup] = "searchForm">
+            <input style="border:1px solid #000;" type="text" (keyup) = "searchTerm.next($event)" formcontrolname = "search" class="input_box" placeholder="Enter your Username"><br />
+            <div *ngIf = "loading">
+                <p class="search-message">Searching</p>
+
+            </div>
+            </form>
+
+            <div *ngIf = "searchResults">
+                <div class="results">
+                    <div class="repo" *ngFor="let result of paginationElements">
+                        <div>
+                            <img loading="lazy" />
+                            <h2>{{result.name}}</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <pagination-controls (pageChange)="page = $event"></pagination-controls> -->
+            <div *ngIf="errorMessage" class="errorMessage">
+                <h2>Error</h2>
+                <p class="error">{{errorMessage}}</p>
+            </div>
+        </div>
+    </div>
+</section>

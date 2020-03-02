@@ -12,6 +12,9 @@ export class StarWarService {
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
 
+  public baseUrl = "https://swapi.co/api/planets";
+  public searchResults: any;
+
   constructor(private http: HttpClient) { 
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
@@ -25,5 +28,24 @@ export class StarWarService {
      return this.http.post<any>(API.LOGIN,
       { name: name, birth_year: birth_year }
     )
+  }
+
+  // Get data from api
+  searchEntries(term): Observable<any> {
+    if(term == ""){
+      console.log("Not Defined");
+    } else {
+      let params = {q: term}
+      return this.http.get(this.baseUrl, {params}).pipe(
+        map(response => {
+          console.log(response);
+          return this.searchResults = response['results']
+        })
+      )
+    }
+  }
+
+  _searchEntries(term) {
+    return this.searchEntries(term);
   }
 }
