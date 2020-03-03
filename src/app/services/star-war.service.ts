@@ -12,8 +12,6 @@ export class StarWarService {
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
 
-  public baseUrl = "https://swapi.co/api/";
-  // public baseUrl = "https://api.github.com/search/repositories";
   public searchResults: any;
 
   constructor(private http: HttpClient) {
@@ -40,7 +38,7 @@ export class StarWarService {
     } else {
       // let params = { q: term }
       // console.log(params);
-      return this.http.get<any>(`${this.baseUrl}planets?search=${term}`).pipe(
+      return this.http.get<any>(`${API.SEARCH}planets?search=${term}`).pipe(
         map(response => {
           console.log(response);
           return this.searchResults = response['results']
