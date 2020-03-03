@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms'
 import { Subject, throwError } from 'rxjs'
 import { map, debounceTime, distinctUntilChanged, switchMap, catchError, retry, retryWhen } from 'rxjs/operators'
 import { StarWarService } from '../services/star-war.service' 
+import { NgxSpinnerService } from "ngx-spinner";  
 
 @Component({
   selector: 'app-search',
@@ -15,19 +16,21 @@ export class SearchComponent implements OnInit {
   public searchResults: any;
   public paginationElements: any;
   public errorMessage: any;
+  public user:any;
 
   constructor(
-    private searchservice: StarWarService
+    private searchservice: StarWarService,
+    private spinnerservice: NgxSpinnerService
   ) { }
 
   ngOnInit() {
     this.search();
+    this.getDataFromLocalStorage();
   }
 
   public searchForm = new FormGroup({
     search: new FormControl("", Validators.required),
   })
-
   public search() {
     this.searchTerm.pipe(
       map((e: any) => {
@@ -37,24 +40,36 @@ export class SearchComponent implements OnInit {
       debounceTime(400),
       distinctUntilChanged(),
       switchMap(term => {
-        this.loading = true;
+        this.spinnerservice.show();
         console.log(term);
         return this.searchservice._searchEntries(term);
         
       }),
       catchError((e) => {
         console.log(e);
-        this.loading = false;
+        this.spinnerservice.hide();
         this.errorMessage = e.message;
         return throwError(e);
       }),
     ).subscribe(v => {
       console.log(v);
-      this.loading = false;
+      this.spinnerservice.hide();
       this.searchResults = v;
       console.log(this.searchResults);
       this.paginationElements = this.searchResults;
     })
   }
-
+  
+  // Get data from local storage
+  getDataFromLocalStorage() {
+    var keys = Object.keys(localStorage);
+    keys.forEach(key=>{
+    var json_data =localStorage.getItem(key)
+    try {
+        var user_data = JSON.parse(json_data);
+        this.user = user_data;
+      } catch (e) {
+    }
+  })
+  }
 }

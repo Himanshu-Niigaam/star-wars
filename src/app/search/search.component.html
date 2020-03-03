@@ -1,33 +1,35 @@
-<section class="container">
-    <div id="login">
-        <h1 style="color:#000;">welcome to star wars</h1>
+<section class="wrapper">
+    <div id="login container">
+        <h1>welcome to {{user.name}}</h1>
         <div class="input_wrapper">
             <form [formGroup] = "searchForm">
-            <input class="input_box" type="text" (keyup) = "searchTerm.next($event)" formcontrolname = "search" class="input_box" placeholder="Enter your Username"><br />
-            <div *ngIf = "loading">
-                <p class="search-message">Searching</p>
-
-            </div>
+                <input class="input_box" type="text" (keyup) = "searchTerm.next($event)" formcontrolname = "search" class="input_box" placeholder="Enter your Username"><br />
+                <div>
+                    <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">  
+                        <p class="white">Please Wait. </p>
+                    </ngx-spinner>
+                </div>
             </form>
-
-            <div *ngIf = "searchResults">
-                <!-- <div class="results"> -->
-                    <div *ngFor="let result of paginationElements">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div  >
-                                    <h2>{{result.name}}</h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                <!-- </div> -->
-            </div>
-            <!-- <pagination-controls (pageChange)="page = $event"></pagination-controls> -->
-            <div *ngIf="errorMessage" class="errorMessage">
-                <h2>Error</h2>
-                <p class="error">{{errorMessage}}</p>
-            </div>
         </div>
+    </div>
+</section>
+
+<section class="container">
+    <div *ngIf = "searchResults">
+        <div class="row">
+            <ng-container *ngFor="let result of paginationElements">
+                <div class="col-4">
+                    <div class="result-bg">
+                        <p>{{result.name}}</p>
+                        <h4>{{result.population | population}}</h4>            
+                        <p>{{result.climate}}</p>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+    <div *ngIf="errorMessage" class="errorMessage">
+        <h2>Error</h2>
+        <p class="error">{{errorMessage}}</p>
     </div>
 </section>

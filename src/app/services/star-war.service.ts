@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { API } from '../utils/api-constant';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User } from '../models/user'
 
@@ -14,7 +14,10 @@ export class StarWarService {
 
   public searchResults: any;
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    
+  ) {
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
   }
@@ -34,7 +37,7 @@ export class StarWarService {
   // Get data from api
   public searchEntries(term: string): Observable<any> {
     if (term == "") {
-      console.log("Not Defined");
+      return of(null);
     } else {
       // let params = { q: term }
       // console.log(params);

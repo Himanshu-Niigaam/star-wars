@@ -48,6 +48,7 @@ export class LoginComponent implements OnInit {
         let objBirth = this.data.find(function (obj) { return obj.birth_year === b });
         if(objName.name && objBirth.birth_year){
           this.router.navigateByUrl('/search');
+          localStorage.setItem('character', JSON.stringify(objName, objBirth));
         } else {
           alert("Invalid Credential");
         }

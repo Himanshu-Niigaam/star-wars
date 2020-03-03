@@ -4,9 +4,10 @@ section {
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+    height:657px;
 }
 
-.container {
+.wrapper {
     display: flex;
     align-items: center;
     justify-content: center;

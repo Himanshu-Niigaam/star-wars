@@ -1,15 +1,15 @@
 section {
-    /* background-image: url('../../assets/images/stars.jpg');
+     /* background-image: url('../../assets/images/stars.jpg'); */
     /* background-position: center center; */
     /* background-repeat: no-repeat; */
     /* background-size: cover; */
     /* background-attachment: fixed; */
 }
 
-.container {
+.wrapper {
     display: flex;
     justify-content: center;
-    padding-top: 15%;;
+    padding-top: 5%;;
 }
 
 .input_wrapper {
@@ -17,7 +17,7 @@ section {
 }
 
 h1 {
-    color: #efecec;
+    color: #000000;
     text-transform: uppercase;
     font-size: 40px;
     line-height: 50px;
@@ -32,4 +32,17 @@ h1 {
     border: none;
     border: 1px solid #efecec;
     border-radius: 10px;
+}
+
+.result-bg {
+    background: #ccc;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    z-index: 99;
+}
+
+.white {
+    color: #ffffff;
 }
