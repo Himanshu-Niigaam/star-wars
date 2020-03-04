@@ -47,17 +47,19 @@ export class LoginComponent implements OnInit {
         this.spinnerservice.hide();
         this.data = resData.results;
         console.log(this.data);
-        let a = this.loginValue.name.value;
-        let b = this.loginValue.birth_year.value;
-        let objName = this.data.find(function (obj) { return obj.name === a });
-        let objBirth = this.data.find(function (obj) { return obj.birth_year === b });
-        if (objName.name && objBirth.birth_year){
+        let userValue = this.loginValue.name.value;
+        let birthValue = this.loginValue.birth_year.value;
+        let objName = this.data.find(function (obj) { return obj.name === userValue });
+        let objBirth = this.data.find(function (obj) { return obj.birth_year === birthValue });
+        if (objName && objBirth){
           this.router.navigateByUrl('/search');
           localStorage.setItem('character', JSON.stringify(objName, objBirth));
-        } 
+        } else {
+          alert("Invalid Credentials !")
+        }
       },
       errRes => {
-        alert("Invalid Credential");
+        alert("Invalid Credentials !");
         console.log(errRes);
       } 
     );

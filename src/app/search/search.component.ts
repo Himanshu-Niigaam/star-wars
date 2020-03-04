@@ -68,7 +68,7 @@ export class SearchComponent implements OnInit {
             this.endTime = new Date();
             if (Math.abs(this.endTime - this.startTime) / 1000 < 60) {
               this.searchCount = 0;
-              alert("You seems to be suspecious ! so if you are human please login again..");
+              alert("You seems to be suspecious ! if you are human please login again..");
               this.router.navigateByUrl('/login');
               localStorage.clear();
             } else {
