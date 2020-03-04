@@ -11,7 +11,6 @@ import { User } from '../models/user'
 export class StarWarService {
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
-
   public searchResults: any;
 
   constructor(
@@ -23,17 +22,17 @@ export class StarWarService {
   }
 
   public get currentUserValue(): User {
-    console.log(this.currentUserSubject.value)
     return this.currentUserSubject.value;
   }
 
+  // This service is for login to authenticate users
   login(name: string, birth_year: string) {
     return this.http.post<any>(API.LOGIN,
       { name: name, birth_year: birth_year }
     )
   }
 
-  // Get data from api
+  // This function is used to get search result data from api
   public searchPlanets(term: string): Observable<any> {
     if (term == "") {
       return of(null);
@@ -47,6 +46,7 @@ export class StarWarService {
     }
   }
 
+  // This function is used to call search planets by name
   public _searchPlanetsByName(term) {
     return this.searchPlanets(term);
   }

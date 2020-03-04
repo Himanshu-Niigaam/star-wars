@@ -1,4 +1,6 @@
 <div class="logout" (click) = "logout()">Logout</div>
+
+<!-- This section is for search planets -->
 <section class="wrapper">
     <div id="login container">
         <h1>welcome to {{user.name}}</h1>
@@ -15,6 +17,7 @@
     </div>
 </section>
 
+<!-- This section display search results -->
 <section class="container">
     <div *ngIf = "searchResults">
         <div class="row">
