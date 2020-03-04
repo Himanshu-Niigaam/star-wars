@@ -28,21 +28,40 @@ h1 {
 .input_box {
     width: 100%;
     padding: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 70px;
     border: none;
     border: 1px solid #efecec;
     border-radius: 10px;
 }
 
 .result-bg {
-    background: #ccc;
+    background: #11966a;
+    border: 1px solid #11966a;
     padding: 20px;
     text-align: center;
     margin-bottom: 20px;
     border-radius: 5px;
     z-index: 99;
+    letter-spacing: 1px;
+    color: #fff;
 }
 
 .white {
     color: #ffffff;
+}
+
+.logout {
+    float: right;
+    padding: 10px 20px;
+    background: #11966a;
+    font-size: 16px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: 1px;
+    margin: 20px;
+    cursor: pointer;
+}
+
+.mb5{
+    margin-bottom: .5rem;
 }

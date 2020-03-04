@@ -23,6 +23,7 @@ export class StarWarService {
   }
 
   public get currentUserValue(): User {
+    console.log(this.currentUserSubject.value)
     return this.currentUserSubject.value;
   }
 
@@ -32,15 +33,11 @@ export class StarWarService {
     )
   }
 
-
-
   // Get data from api
-  public searchEntries(term: string): Observable<any> {
+  public searchPlanets(term: string): Observable<any> {
     if (term == "") {
       return of(null);
     } else {
-      // let params = { q: term }
-      // console.log(params);
       return this.http.get<any>(`${API.SEARCH}planets?search=${term}`).pipe(
         map(response => {
           console.log(response);
@@ -50,7 +47,7 @@ export class StarWarService {
     }
   }
 
-  public _searchEntries(term) {
-    return this.searchEntries(term);
+  public _searchPlanetsByName(term) {
+    return this.searchPlanets(term);
   }
 }

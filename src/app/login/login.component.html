@@ -5,7 +5,12 @@
             <div class="input_wrapper">
                 <input type="text" class="input_box" formControlName="name" placeholder="Enter your Username"><br />
                 <input type="password" class="input_box" formControlName="birth_year" placeholder="Enter your Password"><br />
-                <button type="submit" class="submit_btn">submit</button>
+                <button type="submit" [disabled] = "!loginForm" class="submit_btn">login</button>
+                <div>
+                    <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">  
+                        <p class="white">Please Wait.</p>
+                    </ngx-spinner>
+                </div>
             </div>
         </form>
     </div>

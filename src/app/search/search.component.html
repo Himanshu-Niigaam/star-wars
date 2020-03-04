@@ -1,9 +1,10 @@
+<div class="logout" (click) = "logout()">Logout</div>
 <section class="wrapper">
     <div id="login container">
         <h1>welcome to {{user.name}}</h1>
         <div class="input_wrapper">
-            <form [formGroup] = "searchForm">
-                <input class="input_box" type="text" (keyup) = "searchTerm.next($event)" formcontrolname = "search" class="input_box" placeholder="Enter your Username"><br />
+            <form [formGroup] = "starWarSearch">
+                <input class="input_box" type="text" (keyup) = "searchTerm.next($event)" formcontrolname = "search" class="input_box" placeholder="Search star war planets..."><br />
                 <div>
                     <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">  
                         <p class="white">Please Wait. </p>
@@ -17,12 +18,12 @@
 <section class="container">
     <div *ngIf = "searchResults">
         <div class="row">
-            <ng-container *ngFor="let result of paginationElements">
+            <ng-container *ngFor="let result of storeData">
                 <div class="col-4">
                     <div class="result-bg">
-                        <p>{{result.name}}</p>
+                        <p class="mb5">{{result.name}}</p>
                         <h4>{{result.population | population}}</h4>            
-                        <p>{{result.climate}}</p>
+                        <p>{{result.terrain}}</p>
                     </div>
                 </div>
             </ng-container>

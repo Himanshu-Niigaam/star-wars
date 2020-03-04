@@ -4,7 +4,7 @@ section {
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
-    height:657px;
+    height:700px;
 }
 
 .wrapper {
@@ -34,14 +34,18 @@ h1 {
 }
 
 .submit_btn {
-    background-color: #53051b;
+    background-color: #11966a;
     padding: 10px 15px;
     color: #ffffff;
     text-transform: uppercase;
-    border: 1px solid #53051b;
+    border: 1px solid #11966a;
     cursor: pointer;
-    width: 57%;
+    width: 52%;
     font-size: 18px;
     letter-spacing: 1px;
     margin-top: 20px;
 } 
+
+.white {
+    color: #ffffff;
+}

@@ -6,7 +6,7 @@ html, body, .container {
   }
   
   /* Reset */
-  html, body, h1, p, a, div, section {
+  html, body, p, a, div, section {
     margin: 0;
     padding: 0;
     font-size: 100%;

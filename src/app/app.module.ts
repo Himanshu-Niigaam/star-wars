@@ -11,13 +11,16 @@ import { SearchComponent } from './search/search.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { PopulationPipe } from './pipes/population.pipe';  
+import { AuthGuardService } from './guards/auth-guard.service';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SearchComponent,
-    PopulationPipe
+    PopulationPipe,
+    PagenotfoundComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +32,7 @@ import { PopulationPipe } from './pipes/population.pipe';
     NgxSpinnerModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
